@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Elevare — La primera plataforma digital que conecta startups, inversores y consultores en Ecuador.">
 <title>Elevare — Conectamos talento, capital y visión</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='20' fill='%230A0908'/%3E%3Cg transform='translate(26.6,16) scale(0.516)'%3E%3Crect x='0' y='0' width='13' height='124' rx='4' fill='%23C4693A'/%3E%3Crect x='0' y='4' width='68' height='8' rx='4' fill='%23C4693A'/%3E%3Ccircle cx='76' cy='8' r='7' fill='%23C4693A'/%3E%3Crect x='0' y='58' width='50' height='8' rx='4' fill='%23C4693A'/%3E%3Ccircle cx='58' cy='62' r='6' fill='%23C4693A'/%3E%3Crect x='0' y='112' width='34' height='8' rx='4' fill='%23C4693A'/%3E%3Ccircle cx='42' cy='116' r='5' fill='%23C4693A'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -72,8 +73,9 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
 .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
 .hero-glow-1{position:absolute;top:20%;right:-10%;width:800px;height:800px;background:radial-gradient(ellipse at center,rgba(196,105,58,0.09) 0%,transparent 62%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,241,234,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(245,241,234,0.025) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse at 62% 45%,black 25%,transparent 70%)}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:40px 0 90px}
-.hero-content{text-align:left}
+.hero-inner{position:relative;z-index:1;padding:40px 0 90px}
+.hero-content{text-align:left;max-width:640px;position:relative;z-index:2}
+.hero-mark-bg{position:absolute;top:-30px;right:-40px;width:480px;max-width:44vw;pointer-events:none;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,105,58,0.08);border:1px solid rgba(196,105,58,0.22);border-radius:100px;padding:8px 18px;font-size:12px;font-weight:600;color:var(--clay);margin-bottom:32px;letter-spacing:0.02em}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--clay);animation:blink 2.2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -82,7 +84,6 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
 .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--t1);max-width:480px;margin:0 0 40px;line-height:1.7;font-weight:400}
 .hero-roles{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 .hero-hint{font-size:12px;color:var(--t2);letter-spacing:0.02em}
-.hero-visual{position:relative}
 .hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--t2);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
 .scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--clay));animation:scrollani 2.4s ease infinite}
 @keyframes scrollani{0%{opacity:0;transform:scaleY(0);transform-origin:top}55%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
@@ -313,11 +314,10 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   .agri-stat-grid{grid-template-columns:1fr 1fr}
   .eco-overview{grid-template-columns:1fr 1fr}
   .eco-panel-nums{gap:28px}
-  .hero-inner{grid-template-columns:1fr}
-  .hero-content{text-align:center}
+  .hero-content{text-align:center;max-width:100%}
   .hero-sub{margin-left:auto;margin-right:auto}
   .hero-roles{justify-content:center}
-  .hero-visual{max-width:360px;margin:20px auto 0;order:2}
+  .hero-mark-bg{opacity:0.5;width:340px}
   .plat-switch{grid-template-columns:1fr}
   .plat-tabs{display:flex;border-right:none;border-bottom:1px solid var(--border);overflow-x:auto;gap:4px}
   .plat-tab{flex:0 0 auto;white-space:nowrap}
@@ -333,7 +333,7 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   .footer-inner{flex-direction:column;gap:10px;text-align:center}
   .footer-right{flex-direction:column;gap:6px}
   .ign-card{padding:28px 20px}
-  .hero-visual{max-width:280px}
+  .hero-mark-bg{width:220px}
   .gap-track-row{flex-wrap:wrap}
   .gap-label{min-width:0;width:100%;text-align:left}
   .gap-row-head{flex-direction:column;align-items:flex-start;gap:4px}
@@ -360,12 +360,14 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   <div class="wrap">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-label="Elevare logo">
-          <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
-          <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <svg width="24" height="29" viewBox="0 0 84 126" fill="none" aria-label="Elevare logo">
+          <rect x="0" y="0" width="13" height="124" rx="4" fill="#C4693A"/>
+          <rect x="0" y="4" width="68" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="76" cy="8" r="7" fill="#C4693A"/>
+          <rect x="0" y="58" width="50" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="58" cy="62" r="6" fill="#C4693A"/>
+          <rect x="0" y="112" width="34" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="42" cy="116" r="5" fill="#C4693A"/>
         </svg>
         <span class="nav-logo-text">Elevare</span>
       </a>
@@ -389,6 +391,9 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   </div>
   <div class="wrap">
     <div class="hero-inner">
+      <svg class="hero-mark-bg" viewBox="0 0 400 500" fill="none" aria-hidden="true">
+        <path d="M40,460 Q140,380 210,260 Q260,180 300,110 L330,80 Q280,140 220,250 Q150,360 55,445 Z" fill="var(--clay)" opacity="0.07"/>
+      </svg>
       <div class="hero-content fu">
         <div class="hero-badge">
           <span class="badge-dot" aria-hidden="true"></span>
@@ -397,7 +402,7 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
         <h1 class="hero-h1">
           Tres mundos que<br>
           nunca se hablaron.<br>
-          <em>Ahora convergen.</em>
+          <em>Ahora se encuentran.</em>
         </h1>
         <p class="hero-sub">
           Elevare conecta startups, inversores y consultores en Ecuador en una sola infraestructura — con criterio real, no un directorio más.
@@ -408,25 +413,6 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
           <a href="#cta" class="btn btn-ghost js-open-modal" data-role="consultor">Soy Consultor</a>
         </div>
         <p class="hero-hint">Lista de espera &middot; Sin costo &middot; Solo los mejores perfiles entran</p>
-      </div>
-      <div class="hero-visual fu fd2" aria-hidden="true">
-        <svg width="100%" viewBox="0 0 480 460" fill="none">
-          <path d="M160,80 C280,80 350,150 414,222" stroke="var(--clay)" stroke-width="1.5" opacity="0.85" fill="none"/>
-          <path d="M160,230 L414,230" stroke="var(--clay)" stroke-width="1.5" opacity="0.55" fill="none"/>
-          <path d="M160,380 C280,380 350,310 414,238" stroke="var(--clay)" stroke-width="1.5" opacity="0.35" fill="none"/>
-          <circle cx="160" cy="80" r="5" fill="var(--white)"/>
-          <circle cx="160" cy="230" r="5" fill="var(--white)"/>
-          <circle cx="160" cy="380" r="5" fill="var(--white)"/>
-          <circle cx="430" cy="230" r="16" fill="var(--bg)" stroke="var(--clay)" stroke-width="1.5"/>
-          <circle cx="430" cy="230" r="5" fill="var(--clay)"/>
-          <text x="136" y="74" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Startup</text>
-          <text x="136" y="94" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita capital</text>
-          <text x="136" y="224" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Inversionista</text>
-          <text x="136" y="244" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita deal flow</text>
-          <text x="136" y="374" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Consultor</text>
-          <text x="136" y="394" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita clientes</text>
-          <text x="430" y="270" font-family="Inter" font-size="12" font-weight="600" fill="var(--clay)" text-anchor="middle">Elevare</text>
-        </svg>
       </div>
     </div>
   </div>
@@ -916,12 +902,14 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   <div class="cta-glow" aria-hidden="true"></div>
   <div class="wrap cta-content">
     <div style="text-align:center">
-      <svg class="cta-mark fu" width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
-        <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
-        <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
-        <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
-        <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <svg class="cta-mark fu" width="22" height="27" viewBox="0 0 84 126" fill="none" aria-hidden="true">
+        <rect x="0" y="0" width="13" height="124" rx="4" fill="#C4693A"/>
+        <rect x="0" y="4" width="68" height="8" rx="4" fill="#C4693A"/>
+        <circle cx="76" cy="8" r="7" fill="#C4693A"/>
+        <rect x="0" y="58" width="50" height="8" rx="4" fill="#C4693A"/>
+        <circle cx="58" cy="62" r="6" fill="#C4693A"/>
+        <rect x="0" y="112" width="34" height="8" rx="4" fill="#C4693A"/>
+        <circle cx="42" cy="116" r="5" fill="#C4693A"/>
       </svg>
       <div class="sec-label fu">Lista de Espera</div>
       <h2 class="cta-h2 fu" id="cta-title">Sé de los primeros.</h2>
@@ -956,12 +944,14 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-left">
-        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-          <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
-          <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
-          <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <svg width="16" height="19" viewBox="0 0 84 126" fill="none" aria-hidden="true">
+          <rect x="0" y="0" width="13" height="124" rx="4" fill="#C4693A"/>
+          <rect x="0" y="4" width="68" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="76" cy="8" r="7" fill="#C4693A"/>
+          <rect x="0" y="58" width="50" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="58" cy="62" r="6" fill="#C4693A"/>
+          <rect x="0" y="112" width="34" height="8" rx="4" fill="#C4693A"/>
+          <circle cx="42" cy="116" r="5" fill="#C4693A"/>
         </svg>
         <span class="footer-copy">&copy; 2026 Elevare</span>
       </div>
