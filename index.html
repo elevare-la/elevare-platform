@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Elevare Ventures — La primera plataforma digital que conecta startups, inversores y consultores en Ecuador.">
+<title>Elevare Ventures — Conectamos talento, capital y visión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0908;
+  --bg-alt: #0F0E0C;
+  --surface: #15130F;
+  --surface-hover: #1A1712;
+  --border: #252119;
+  --border-hover: #362F22;
+  --clay: #C4693A;
+  --clay-hover: #D67A48;
+  --clay-dim: rgba(196,105,58,0.12);
+  --clay-glow: rgba(196,105,58,0.06);
+  --green: #4A7856;
+  --green-dim: rgba(74,120,86,0.14);
+  --white: #F5F1EA;
+  --t1: #9A9488;
+  --t2: #5C574C;
+  --t3: #38352C;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font);background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+button{font-family:var(--font);cursor:pointer;border:none;background:none}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.wrap--sm{max-width:760px;margin:0 auto;padding:0 28px}
+
+.sec{padding:120px 0}
+.sec--alt{background:var(--bg-alt)}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--clay);margin-bottom:18px}
+.sec-title{font-family:var(--font-display);font-size:clamp(32px,4.6vw,48px);font-weight:500;line-height:1.12;letter-spacing:-0.01em;margin-bottom:18px}
+.sec-sub{font-size:17px;color:var(--t1);line-height:1.75;max-width:580px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s ease;font-family:var(--font);letter-spacing:-0.01em}
+.btn-primary{background:var(--clay);color:#000}
+.btn-primary:hover{background:var(--clay-hover);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,0.05);color:var(--white);border:1px solid var(--border-hover)}
+.btn-ghost:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.2)}
+
+/* ── NAV ─────────────────────────────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rgba(10,9,8,0.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:border-color 0.3s,background 0.3s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:11px;flex-shrink:0;transition:opacity 0.2s}
+.nav-logo:hover{opacity:0.82}
+.nav-logo-text{font-family:var(--font-display);font-size:18px;font-weight:600;font-style:italic;letter-spacing:-0.01em;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:13.5px;color:var(--t1);font-weight:500;letter-spacing:0.01em;position:relative;padding:4px 0}
+.nav-link::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--clay);transition:width 0.25s ease}
+.nav-link:hover{color:var(--white)}
+.nav-link:hover::after{width:100%}
+.nav-cta{padding:10px 22px;font-size:13.5px;flex-shrink:0}
+
+/* ── HERO ─────────────────────────────────────────────── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-glow-1{position:absolute;top:20%;right:-10%;width:800px;height:800px;background:radial-gradient(ellipse at center,rgba(196,105,58,0.09) 0%,transparent 62%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,241,234,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(245,241,234,0.025) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse at 62% 45%,black 25%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:40px 0 90px}
+.hero-content{text-align:left}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,105,58,0.08);border:1px solid rgba(196,105,58,0.22);border-radius:100px;padding:8px 18px;font-size:12px;font-weight:600;color:var(--clay);margin-bottom:32px;letter-spacing:0.02em}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--clay);animation:blink 2.2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-family:var(--font-display);font-size:clamp(44px,6vw,74px);font-weight:600;font-style:italic;line-height:1.04;letter-spacing:-0.01em;margin-bottom:26px}
+.hero-h1 em{font-style:normal;color:var(--clay)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--t1);max-width:480px;margin:0 0 40px;line-height:1.7;font-weight:400}
+.hero-roles{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-hint{font-size:12px;color:var(--t2);letter-spacing:0.02em}
+.hero-visual{position:relative}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--t2);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--clay));animation:scrollani 2.4s ease infinite}
+@keyframes scrollani{0%{opacity:0;transform:scaleY(0);transform-origin:top}55%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+
+/* ── STATS ───────────────────────────────────────────── */
+#stats{padding:72px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{text-align:center;padding:40px 20px;position:relative}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:25%;height:50%;width:1px;background:var(--border)}
+.stat-num{font-size:clamp(40px,5vw,58px);font-weight:900;color:var(--clay);letter-spacing:-0.04em;line-height:1;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.stat-label{font-size:13px;color:var(--t1);line-height:1.5;max-width:160px;margin:0 auto}
+
+/* ── PROBLEM ─────────────────────────────────────────── */
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:76px}
+.prob-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:38px 32px;transition:border-color 0.25s,transform 0.25s}
+.prob-card:hover{border-color:var(--border-hover)}
+.prob-card:nth-child(2){transform:translateY(30px)}
+.prob-icon{width:44px;height:44px;border-radius:11px;background:var(--clay-dim);border:1px solid rgba(196,105,58,0.24);display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+.prob-title{font-size:20px;font-weight:800;margin-bottom:14px;letter-spacing:-0.02em}
+.prob-body{font-size:15px;color:var(--t1);line-height:1.75}
+.prob-impact{display:flex;align-items:center;gap:32px;background:rgba(196,105,58,0.07);border:1px solid rgba(196,105,58,0.2);border-radius:var(--radius-lg);padding:34px 38px;margin-top:74px}
+.prob-impact-num{font-family:var(--font-display);font-size:60px;font-weight:600;color:var(--clay);line-height:1;flex-shrink:0}
+.prob-impact-text{font-size:15px;color:var(--t1);line-height:1.75}
+.prob-impact-text strong{color:var(--white);font-weight:700}
+
+/* ── PLATFORM ────────────────────────────────────────── */
+.plat-switch{display:grid;grid-template-columns:270px 1fr;margin-top:60px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.plat-tabs{border-right:1px solid var(--border);padding:14px}
+.plat-tab{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:16px 16px;border-radius:10px;color:var(--t1);font-size:14.5px;font-weight:600;transition:background 0.2s,color 0.2s;background:none;border:none;cursor:pointer;margin-bottom:2px}
+.plat-tab-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--t2);flex-shrink:0;transition:all 0.2s;background:transparent}
+.plat-tab.active{background:var(--clay-dim);color:var(--white)}
+.plat-tab.active .plat-tab-dot{background:var(--clay);border-color:var(--clay);box-shadow:0 0 0 3px rgba(196,105,58,0.18)}
+.plat-tab:hover:not(.active){background:rgba(255,255,255,0.03);color:var(--white)}
+.plat-panels{padding:48px 52px;position:relative}
+.plat-panel{display:none}
+.plat-panel.active{display:block;animation:platFade 0.4s ease}
+@keyframes platFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.plat-panel-icon{width:50px;height:50px;border-radius:12px;background:var(--clay-dim);border:1px solid rgba(196,105,58,0.28);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.plat-panel-title{font-size:25px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.25}
+.plat-panel-sub{font-size:15px;color:var(--t1);line-height:1.7;margin-bottom:30px;max-width:460px}
+.plat-panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}
+.plat-panel-item{font-size:14px;color:var(--t1);display:flex;align-items:flex-start;gap:10px;line-height:1.55}
+.plat-dot{width:4px;height:4px;border-radius:50%;background:var(--clay);flex-shrink:0;margin-top:8px}
+
+
+/* ── HOW IT WORKS ────────────────────────────────────── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;position:relative}
+.steps-line-1{position:absolute;top:24px;left:16.67%;width:33.33%;height:1px;background-image:repeating-linear-gradient(to right,var(--t2) 0 6px,transparent 6px 12px);opacity:0.7}
+.steps-line-2{position:absolute;top:24px;left:50%;width:33.33%;height:1px;background:var(--clay)}
+.step{text-align:center;padding:0 24px}
+.step-circle{width:48px;height:48px;border-radius:50%;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 26px;position:relative;z-index:1;transition:all 0.3s}
+.step-circle.state-scattered{background:transparent;border:2px solid var(--t2);color:var(--t1)}
+.step-circle.state-connecting{background:transparent;border:2px dashed var(--clay);color:var(--clay)}
+.step-circle.state-converged{background:var(--clay);border:2px solid var(--clay);color:#000;box-shadow:0 0 0 6px rgba(196,105,58,0.16)}.step-title{font-size:21px;font-weight:800;margin-bottom:12px;letter-spacing:-0.02em}
+.step-body{font-size:15px;color:var(--t1);line-height:1.75}
+
+/* ── AGRITECH ────────────────────────────────────────── */
+.agri-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:60px}
+.agri-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.agri-stat{background:var(--surface);padding:28px 24px}
+.agri-stat-n{font-size:32px;font-weight:900;color:var(--green);letter-spacing:-0.03em;margin-bottom:6px;line-height:1}
+.agri-stat-l{font-size:13px;color:var(--t1);line-height:1.5}
+.agri-callout{background:rgba(74,120,86,0.10);border:1px solid rgba(74,120,86,0.28);border-radius:var(--radius);padding:22px 24px;margin-top:28px}
+.agri-callout p{font-size:15px;color:var(--t1);line-height:1.7}
+.agri-callout strong{color:var(--white)}
+.agri-callout .green{color:var(--green);font-weight:700}
+.gap-chart-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--t2);margin-bottom:28px}
+.gap-row{padding:26px 0;border-bottom:1px solid var(--border)}
+.gap-row:last-child{border-bottom:none}
+.gap-row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.gap-name{font-size:17px;font-weight:800;letter-spacing:-0.01em}
+.gap-keywords{font-size:12.5px;color:var(--t2)}
+.gap-track-row{display:flex;align-items:center;gap:14px;margin-bottom:9px}
+.gap-track-row:last-child{margin-bottom:0}
+.gap-track{flex:1;height:9px;background:var(--bg-alt);border-radius:5px;overflow:hidden;border:1px solid var(--border)}
+.gap-fill{height:100%;border-radius:5px;width:0;transition:width 1.3s cubic-bezier(.16,1,.3,1)}
+.gap-fill.export{background:var(--green)}
+.gap-fill.tech{background:var(--t2)}
+.fu.on .gap-fill{width:var(--w)}
+.gap-label{font-size:12.5px;color:var(--t1);white-space:nowrap;min-width:172px;text-align:right}
+
+/* ── ECOSYSTEM DATA EXPLORER ─────────────────────────── */
+.eco-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:52px 0 20px}
+.eco-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 18px;text-align:center;transition:border-color 0.25s}
+.eco-stat:hover{border-color:var(--border-hover)}
+.eco-stat-n{font-family:var(--font-display);font-size:30px;font-weight:600;color:var(--clay);line-height:1;font-variant-numeric:tabular-nums}
+.eco-stat-l{font-size:12px;color:var(--t1);margin-top:9px;line-height:1.4}
+.eco-explorer{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:8px;margin-top:36px}
+.eco-tabs{display:flex;flex-wrap:wrap;gap:6px;padding:12px}
+.eco-tab{padding:9px 18px;border-radius:100px;border:1px solid var(--border-hover);background:transparent;color:var(--t1);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:var(--font)}
+.eco-tab.active{background:var(--clay);color:#000;border-color:var(--clay)}
+.eco-tab:hover:not(.active){border-color:var(--clay);color:var(--white)}
+.eco-panel{padding:32px 32px 36px;border-top:1px solid var(--border)}
+.eco-panel-title{font-size:19px;font-weight:800;margin-bottom:22px;letter-spacing:-0.01em}
+.eco-panel-nums{display:flex;gap:44px;margin-bottom:26px;flex-wrap:wrap}
+.eco-num{font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--white);line-height:1;font-variant-numeric:tabular-nums}
+.eco-num-label{font-size:12px;color:var(--t2);margin-top:7px}
+.eco-funded-row{margin-bottom:22px}
+.eco-funded-label{display:flex;justify-content:space-between;font-size:13px;color:var(--t1);margin-bottom:9px}
+.eco-funded-label strong{color:var(--white)}
+.eco-funded-track{height:10px;background:var(--bg-alt);border-radius:5px;overflow:hidden;border:1px solid var(--border)}
+.eco-funded-fill{height:100%;background:var(--clay);border-radius:5px;width:0;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.eco-insight{font-size:14.5px;color:var(--t1);line-height:1.75;padding-top:22px;border-top:1px solid var(--border)}
+.eco-insight strong{color:var(--white)}
+.eco-source{font-size:11px;color:var(--t2);margin-top:22px;letter-spacing:0.01em}
+
+/* ── WHY ELEVARE ─────────────────────────────────────── */
+.obj-list{margin-top:56px}
+.obj-row{display:grid;grid-template-columns:0.9fr 1.3fr;gap:36px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--border)}
+.obj-row:last-child{border-bottom:none}
+.obj-q{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:19px;color:var(--t1);line-height:1.45}
+.obj-a{font-size:14.5px;color:var(--t1);line-height:1.75}
+.obj-a strong{color:var(--white);font-weight:700}
+
+/* ── ABOUT ───────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-body{font-size:16px;color:var(--t1);line-height:1.8;margin-bottom:18px}
+.about-cards{display:flex;flex-direction:column;gap:16px}
+.about-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px}
+.mini-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--clay);margin-bottom:8px}
+.mini-text{font-size:15px;color:var(--t1);line-height:1.7}
+
+/* ── IGNACIO ─────────────────────────────────────────── */
+.ign-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:44px;display:flex;gap:36px;align-items:flex-start}
+.ign-av{width:76px;height:76px;border-radius:50%;background:var(--clay-dim);border:2px solid rgba(196,105,58,0.32);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-style:italic;font-size:26px;font-weight:600;color:var(--clay);flex-shrink:0;letter-spacing:-0.01em}
+.ign-name{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:25px;letter-spacing:-0.01em;margin-bottom:4px}
+.ign-role{font-size:13px;color:var(--clay);font-weight:600;margin-bottom:20px}
+.ign-bio{font-size:15px;color:var(--t1);line-height:1.8;margin-bottom:16px}
+.ign-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.ign-tag{font-size:12px;font-weight:600;background:rgba(255,255,255,0.04);border:1px solid var(--border-hover);border-radius:100px;padding:5px 13px;color:var(--t1)}
+
+/* ── MATCHER ─────────────────────────────────────────── */
+.match-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px 44px;margin-top:8px;position:relative;overflow:hidden}
+.match-progress{display:flex;justify-content:center;gap:8px;margin-bottom:36px}
+.match-dot{width:8px;height:8px;border-radius:4px;background:var(--border-hover);transition:all 0.35s ease}
+.match-dot.active{background:var(--clay);width:26px}
+.match-dot.done{background:var(--clay);opacity:0.45}
+.match-step{display:none}
+.match-step.active{display:block;animation:matchFade 0.4s ease}
+@keyframes matchFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.match-q{font-size:19px;font-weight:800;text-align:center;margin-bottom:30px;letter-spacing:-0.01em}
+.match-options-role{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.match-opt{display:flex;flex-direction:column;align-items:center;gap:12px;padding:26px 14px;border-radius:var(--radius);border:1px solid var(--border-hover);background:transparent;color:var(--t1);font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s ease;font-family:var(--font)}
+.match-opt:hover{border-color:var(--clay);background:var(--clay-dim);color:var(--white);transform:translateY(-2px)}
+.match-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.match-pill{padding:12px 22px;border-radius:100px;border:1px solid var(--border-hover);background:transparent;color:var(--t1);font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.2s ease;font-family:var(--font)}
+.match-pill:hover{border-color:var(--clay);background:var(--clay-dim);color:var(--white)}
+.match-result-icon{width:52px;height:52px;border-radius:14px;background:var(--clay-dim);border:1px solid rgba(196,105,58,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.match-result-title{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:24px;text-align:center;margin-bottom:20px}
+.match-result-text{font-size:15px;color:var(--t1);line-height:1.8;text-align:center;max-width:480px;margin:0 auto 32px}
+.match-result-text strong{color:var(--white)}
+.match-result-actions{display:flex;flex-direction:column;align-items:center;gap:14px}
+.match-reset{background:none;border:none;color:var(--t2);font-size:13px;cursor:pointer;font-family:var(--font);text-decoration:underline;text-underline-offset:3px}
+.match-reset:hover{color:var(--clay)}
+.match-disclaimer{font-size:11px;color:var(--t2);text-align:center;margin-top:20px}
+
+/* ── INTAKE MODAL ────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,9,8,0.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.25s ease}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;max-width:440px;width:100%;position:relative;transform:translateY(14px);transition:transform 0.3s cubic-bezier(.16,1,.3,1);max-height:88vh;overflow-y:auto}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--t1);font-size:20px;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all 0.2s;line-height:1}
+.modal-close:hover{background:rgba(255,255,255,0.06);color:var(--white)}
+.modal-role-tabs{display:flex;gap:8px;margin-bottom:26px}
+.modal-role-tab{flex:1;padding:9px 8px;border-radius:100px;border:1px solid var(--border-hover);background:transparent;color:var(--t1);font-size:12.5px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:var(--font)}
+.modal-role-tab.active{background:var(--clay);color:#000;border-color:var(--clay)}
+.modal-title{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:22px;margin-bottom:8px;letter-spacing:-0.01em}
+.modal-sub{font-size:13.5px;color:var(--t1);margin-bottom:26px;line-height:1.6}
+.modal-field{margin-bottom:16px}
+.modal-field label{display:block;font-size:12px;font-weight:700;color:var(--t1);margin-bottom:7px;letter-spacing:0.01em}
+.modal-field input,.modal-field select{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--border-hover);background:var(--bg-alt);color:var(--white);font-size:14px;font-family:var(--font);transition:border-color 0.2s}
+.modal-field input:focus,.modal-field select:focus{outline:none;border-color:var(--clay)}
+.modal-submit{width:100%;justify-content:center;margin-top:6px;font-size:14.5px;padding:13px}
+.modal-submit:disabled{opacity:0.55;cursor:not-allowed}
+.modal-success,.modal-error{text-align:center;padding:8px 0}
+.modal-success-icon{width:52px;height:52px;border-radius:50%;background:var(--clay-dim);border:1px solid rgba(196,105,58,0.32);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.modal-success h3{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:22px;margin-bottom:12px}
+.modal-success p,.modal-error p{font-size:14px;color:var(--t1);line-height:1.75}
+.modal-error a{color:var(--clay)}
+
+/* ── CTA FINAL ───────────────────────────────────────── */
+#cta{padding:130px 0;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse at center,rgba(196,105,58,0.09) 0%,transparent 65%);pointer-events:none}
+.cta-content{position:relative;z-index:1}
+.cta-mark{margin:0 auto 30px;opacity:0.9}
+.cta-h2{font-family:var(--font-display);font-size:clamp(38px,6.5vw,64px);font-weight:500;font-style:italic;letter-spacing:-0.01em;margin-bottom:18px;line-height:1.05}
+.cta-sub{font-size:18px;color:var(--t1);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:600px;margin:0 auto}
+.cta-role-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:26px 16px;border-radius:var(--radius-lg);border:1px solid var(--border-hover);background:rgba(255,255,255,0.03);transition:all 0.25s ease}
+.cta-role-card:hover{border-color:var(--clay);background:var(--clay-dim);transform:translateY(-4px)}
+.cta-role-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.cta-role-label{font-size:14px;font-weight:700;color:var(--white)}
+.cta-note{font-size:12px;color:var(--t2);margin-top:32px;letter-spacing:0.03em}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{padding:36px 0;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-left{display:flex;align-items:center;gap:10px}
+.footer-copy{font-size:13px;color:var(--t2)}
+.footer-right{display:flex;align-items:center;gap:18px}
+.footer-tagline{font-size:13px;color:var(--t2);font-style:italic}
+.footer-contact{font-size:13px;color:var(--t2);transition:color 0.2s}
+.footer-contact:hover{color:var(--clay)}
+
+/* ── ANIMATIONS ──────────────────────────────────────── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.fd1{transition-delay:0.1s}.fd2{transition-delay:0.2s}.fd3{transition-delay:0.3s}.fd4{transition-delay:0.4s}
+
+/* ── SCROLLBAR ───────────────────────────────────────── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-hover);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--t2)}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2)::after{display:none}
+  .prob-grid,.steps,.about-grid,.agri-layout{grid-template-columns:1fr}
+  .obj-row{grid-template-columns:1fr;gap:12px}
+  .prob-card:nth-child(2){transform:none}
+  .prob-impact{flex-direction:column;text-align:center;gap:18px}
+  .steps-line-1,.steps-line-2{display:none}
+  .ign-card{flex-direction:column}
+  .nav-links{display:none}
+  .sec-title{font-size:32px}
+  .agri-stat-grid{grid-template-columns:1fr 1fr}
+  .eco-overview{grid-template-columns:1fr 1fr}
+  .eco-panel-nums{gap:28px}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-content{text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-roles{justify-content:center}
+  .hero-visual{max-width:360px;margin:20px auto 0;order:2}
+  .plat-switch{grid-template-columns:1fr}
+  .plat-tabs{display:flex;border-right:none;border-bottom:1px solid var(--border);overflow-x:auto;gap:4px}
+  .plat-tab{flex:0 0 auto;white-space:nowrap}
+  .plat-panels{padding:36px 28px}
+  .plat-panel-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .wrap,.wrap--sm{padding:0 18px}
+  .hero-h1{font-size:38px}
+  .hero-roles{flex-direction:column;align-items:center}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-item::after{display:none}
+  .footer-inner{flex-direction:column;gap:10px;text-align:center}
+  .footer-right{flex-direction:column;gap:6px}
+  .ign-card{padding:28px 20px}
+  .hero-visual{max-width:280px}
+  .gap-track-row{flex-wrap:wrap}
+  .gap-label{min-width:0;width:100%;text-align:left}
+  .gap-row-head{flex-direction:column;align-items:flex-start;gap:4px}
+  .cta-roles{grid-template-columns:1fr}
+  .eco-overview{grid-template-columns:1fr 1fr;gap:10px}
+  .eco-stat-n{font-size:24px}
+  .eco-panel{padding:26px 20px 30px}
+  .eco-num{font-size:32px}
+  .match-card{padding:32px 22px}
+  .match-options-role{grid-template-columns:1fr;gap:10px}
+  .match-opt{flex-direction:row;justify-content:flex-start;padding:16px 18px}
+  .modal-box{padding:28px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fu{transition:none;opacity:1;transform:none}
+  .badge-dot,.scroll-line,.scrollani{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-label="Elevare Ventures logo">
+          <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
+          <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="nav-logo-text">Elevare Ventures</span>
+      </a>
+      <div class="nav-links" aria-label="Main navigation" role="navigation">
+        <a href="#problema" class="nav-link">El Problema</a>
+        <a href="#plataforma" class="nav-link">La Plataforma</a>
+        <a href="#agritech" class="nav-link">AgriTech</a>
+        <a href="#datos" class="nav-link">Datos</a>
+        <a href="#ignacio" class="nav-link">El Founder</a>
+      </div>
+      <a href="#cta" class="btn btn-primary nav-cta js-open-modal">Únete →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg">
+    <div class="hero-glow-1"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-content fu">
+        <div class="hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          La primera plataforma de venture ecosystem de Ecuador
+        </div>
+        <h1 class="hero-h1">
+          Tres mundos que<br>
+          nunca se hablaron.<br>
+          <em>Ahora convergen.</em>
+        </h1>
+        <p class="hero-sub">
+          Elevare conecta startups, inversores y consultores en Ecuador en una sola infraestructura — con criterio real, no un directorio más.
+        </p>
+        <div class="hero-roles">
+          <a href="#cta" class="btn btn-ghost js-open-modal" data-role="startup">Soy Startup</a>
+          <a href="#cta" class="btn btn-ghost js-open-modal" data-role="inversionista">Soy Inversionista</a>
+          <a href="#cta" class="btn btn-ghost js-open-modal" data-role="consultor">Soy Consultor</a>
+        </div>
+        <p class="hero-hint">Lista de espera &middot; Sin costo &middot; Solo los mejores perfiles entran</p>
+      </div>
+      <div class="hero-visual fu fd2" aria-hidden="true">
+        <svg width="100%" viewBox="0 0 480 460" fill="none">
+          <path d="M160,80 C280,80 350,150 414,222" stroke="var(--clay)" stroke-width="1.5" opacity="0.85" fill="none"/>
+          <path d="M160,230 L414,230" stroke="var(--clay)" stroke-width="1.5" opacity="0.55" fill="none"/>
+          <path d="M160,380 C280,380 350,310 414,238" stroke="var(--clay)" stroke-width="1.5" opacity="0.35" fill="none"/>
+          <circle cx="160" cy="80" r="5" fill="var(--white)"/>
+          <circle cx="160" cy="230" r="5" fill="var(--white)"/>
+          <circle cx="160" cy="380" r="5" fill="var(--white)"/>
+          <circle cx="430" cy="230" r="16" fill="var(--bg)" stroke="var(--clay)" stroke-width="1.5"/>
+          <circle cx="430" cy="230" r="5" fill="var(--clay)"/>
+          <text x="136" y="74" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Startup</text>
+          <text x="136" y="94" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita capital</text>
+          <text x="136" y="224" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Inversionista</text>
+          <text x="136" y="244" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita deal flow</text>
+          <text x="136" y="374" font-family="Inter" font-size="14" font-weight="600" fill="var(--white)" text-anchor="end">Consultor</text>
+          <text x="136" y="394" font-family="Inter" font-size="11" fill="var(--t2)" text-anchor="end">necesita clientes</text>
+          <text x="430" y="270" font-family="Inter" font-size="12" font-weight="600" fill="var(--clay)" text-anchor="middle">Elevare</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════ STATS ════════ -->
+<section id="stats" aria-label="Key statistics">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item fu">
+        <div class="stat-num" data-target="2650" data-suffix="+">0</div>
+        <div class="stat-label">Startups activas en Ecuador</div>
+      </div>
+      <div class="stat-item fu fd1">
+        <div class="stat-num" data-target="80" data-suffix="%">0</div>
+        <div class="stat-label">Fracasan sin las conexiones correctas</div>
+      </div>
+      <div class="stat-item fu fd2">
+        <div class="stat-num" data-static="$4.1B">$4.1B</div>
+        <div class="stat-label">Capital VC disponible en LATAM 2025</div>
+      </div>
+      <div class="stat-item fu fd3">
+        <div class="stat-num" data-static="2/26">2/26</div>
+        <div class="stat-label">AgriTech startups financiadas en Ecuador</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROBLEMA ════════ -->
+<section id="problema" class="sec sec--alt" aria-labelledby="prob-title">
+  <div class="wrap">
+    <div class="fu">
+      <div class="sec-label">El Problema</div>
+      <h2 class="sec-title" id="prob-title">El ecosistema existe.<br>La infraestructura, no.</h2>
+      <p class="sec-sub">En Ecuador, las buenas ideas mueren antes de crecer. No por falta de talento — por falta de acceso a las conexiones correctas.</p>
+    </div>
+    <div class="prob-grid" role="list">
+      <div class="prob-card fu fd1" role="listitem">
+        <div class="prob-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v6c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 13v4c0 1.66 3.13 3 7 3s7-1.34 7-3v-4"/></svg>
+        </div>
+        <div class="prob-title">Acceso al capital</div>
+        <div class="prob-body">Ecuador no tiene una red organizada que conecte startups con capital real. Los inversores existen. La conexión hacia ellos, no. El capital espera. Los founders también.</div>
+      </div>
+      <div class="prob-card fu fd2" role="listitem">
+        <div class="prob-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 3.5a8.5 8.5 0 0 0-8.4 9.8L3 21l7.9-1.1A8.5 8.5 0 1 0 12.5 3.5z"/></svg>
+        </div>
+        <div class="prob-title">Mentoría estructurada</div>
+        <div class="prob-body">Hay profesionales con décadas de experiencia en Ecuador. Ejecutivos, directores, ex-consultores. Pero no hay un canal que los conecte con los founders que los necesitan.</div>
+      </div>
+      <div class="prob-card fu fd3" role="listitem">
+        <div class="prob-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="12" r="2.2" fill="#C4693A"/><circle cx="17" cy="6" r="1.8" fill="#C4693A" opacity="0.7"/><circle cx="18" cy="16" r="2.4" fill="#C4693A" opacity="0.85"/><circle cx="11" cy="18" r="1.6" fill="#C4693A" opacity="0.55"/></svg>
+        </div>
+        <div class="prob-title">Un ecosistema fragmentado</div>
+        <div class="prob-body">Aceleradoras, inversores y consultores operan en silos. Sin una capa digital que conecte los puntos, el talento sigue siendo invisible para el capital.</div>
+      </div>
+    </div>
+    <div class="prob-impact fu">
+      <div class="prob-impact-num">80%</div>
+      <div class="prob-impact-text">De las startups ecuatorianas <strong>fracasan en sus primeros 3 años</strong> — no por ideas débiles, sino por falta de estructura, acceso y conexión en el momento correcto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PLATAFORMA ════════ -->
+<section id="plataforma" class="sec" aria-labelledby="plat-title">
+  <div class="wrap">
+    <div class="fu">
+      <div class="sec-label">La Plataforma</div>
+      <h2 class="sec-title" id="plat-title">Tres perfiles.<br>Una plataforma.</h2>
+      <p class="sec-sub">Elevare no es un directorio ni una aceleradora. Es la infraestructura digital que conecta los tres actores clave del ecosistema emprendedor ecuatoriano.</p>
+    </div>
+    <div class="plat-switch fu">
+      <div class="plat-tabs" role="tablist" aria-label="Perfiles de la plataforma">
+        <button class="plat-tab active" role="tab" aria-selected="true" aria-controls="panel-startup" id="tab-startup" data-tab="startup">
+          <span class="plat-tab-dot" aria-hidden="true"></span>Startup
+        </button>
+        <button class="plat-tab" role="tab" aria-selected="false" aria-controls="panel-inversionista" id="tab-inversionista" data-tab="inversionista">
+          <span class="plat-tab-dot" aria-hidden="true"></span>Inversionista
+        </button>
+        <button class="plat-tab" role="tab" aria-selected="false" aria-controls="panel-consultor" id="tab-consultor" data-tab="consultor">
+          <span class="plat-tab-dot" aria-hidden="true"></span>Consultor
+        </button>
+      </div>
+      <div class="plat-panels">
+
+        <div class="plat-panel active" id="panel-startup" role="tabpanel" aria-labelledby="tab-startup">
+          <div class="plat-panel-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="plat-panel-title">Visibilidad real ante capital e inteligencia</div>
+          <p class="plat-panel-sub">Tu perfil no compite en un directorio genérico — llega curado directamente a quien puede decir que sí.</p>
+          <div class="plat-panel-grid">
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Perfil verificado visible a inversores curados</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Matching con consultores senior de industria</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Pitch review y feedback estratégico</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Acceso a deal flow estructurado</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Comunidad de founders ecuatorianos serios</div>
+          </div>
+        </div>
+
+        <div class="plat-panel" id="panel-inversionista" role="tabpanel" aria-labelledby="tab-inversionista" hidden>
+          <div class="plat-panel-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="plat-panel-title">Deal flow curado en sectores de alto potencial</div>
+          <p class="plat-panel-sub">No es un directorio de startups sin filtrar. Cada perfil que ves ya pasó una revisión manual.</p>
+          <div class="plat-panel-grid">
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Startups verificadas, no directorio genérico</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Filtros por sector, etapa y ticket de inversión</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Acceso prioritario al vertical AgriTech</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Reportes de ecosistema cada trimestre</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Conexión directa y contextualizada con founders</div>
+          </div>
+        </div>
+
+        <div class="plat-panel" id="panel-consultor" role="tabpanel" aria-labelledby="tab-consultor" hidden>
+          <div class="plat-panel-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="plat-panel-title">Pipeline estructurado de clientes startup</div>
+          <p class="plat-panel-sub">Tu experiencia entra directo al ecosistema, sin tener que cazar clientes por tu cuenta.</p>
+          <div class="plat-panel-grid">
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Matching curado por expertise e industria</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Visibilidad como Founding Advisor de Elevare</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>2–5 introducciones cualificadas por mes</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Co-branding con la plataforma</div>
+            <div class="plat-panel-item"><span class="plat-dot" aria-hidden="true"></span>Red de pares ejecutivos de alto nivel</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ HOW IT WORKS ════════ -->
+<section class="sec sec--alt" aria-labelledby="how-title">
+  <div class="wrap--sm">
+    <div class="fu" style="text-align:center">
+      <div class="sec-label">Cómo Funciona</div>
+      <h2 class="sec-title" id="how-title">Así funciona Elevare</h2>
+      <p class="sec-sub" style="margin:0 auto">No es una lista de espera genérica. Es un proceso curado, humano y con criterio desde el primer día.</p>
+    </div>
+    <div class="steps">
+      <div class="steps-line-1" aria-hidden="true"></div>
+      <div class="steps-line-2" aria-hidden="true"></div>
+      <div class="step fu fd1">
+        <div class="step-circle state-scattered" aria-label="Paso 1">1</div>
+        <div class="step-title">Aplica</div>
+        <div class="step-body">Crea tu perfil en minutos. El equipo de Elevare revisa tu aplicación manualmente en 72 horas. Solo los perfiles serios entran.</div>
+      </div>
+      <div class="step fu fd2">
+        <div class="step-circle state-connecting" aria-label="Paso 2">2</div>
+        <div class="step-title">Conecta</div>
+        <div class="step-body">Matching curado por sector, etapa y necesidad. No algoritmos fríos — conexiones reales, con contexto e intención clara.</div>
+      </div>
+      <div class="step fu fd3">
+        <div class="step-circle state-converged" aria-label="Paso 3">3</div>
+        <div class="step-title">Crece</div>
+        <div class="step-body">De la introducción al deal. Elevare está activo en cada paso — desde la primera reunión hasta el cierre del contrato.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ AGRITECH ════════ -->
+<section id="agritech" class="sec" aria-labelledby="agri-title">
+  <div class="wrap">
+    <div class="agri-layout">
+      <div class="fu">
+        <div class="sec-label">El Vertical Insignia</div>
+        <h2 class="sec-title" id="agri-title" style="font-size:clamp(30px,4vw,46px)">Ecuador tiene los activos.<br>Le falta la tecnología.</h2>
+        <p class="sec-sub" style="margin-bottom:24px">Somos el #1 exportador de banano del mundo. #1 mundial en cacao fino de aroma. Líderes mundiales en flores y camarón. Y casi cero tecnología en la cadena de valor de ninguno de estos sectores.</p>
+        <div class="agri-callout">
+          <p>El mercado global de AgriTech crecerá de <strong>$24.4B a $49B para 2030</strong>. Ecuador captura casi nada de ese capital hoy. <span class="green">Elevare está construido para cambiar eso.</span></p>
+        </div>
+      </div>
+      <div class="fu fd2">
+        <div class="agri-stat-grid">
+          <div class="agri-stat">
+            <div class="agri-stat-n">#1</div>
+            <div class="agri-stat-l">Exportador mundial de banano</div>
+          </div>
+          <div class="agri-stat">
+            <div class="agri-stat-n">#1</div>
+            <div class="agri-stat-l">Exportador mundial de cacao fino de aroma</div>
+          </div>
+          <div class="agri-stat">
+            <div class="agri-stat-n">$8B+</div>
+            <div class="agri-stat-l">Exportaciones agrícolas anuales</div>
+          </div>
+          <div class="agri-stat">
+            <div class="agri-stat-n">2/26</div>
+            <div class="agri-stat-l">AgriTech startups con financiamiento real</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fu">
+      <div class="gap-chart-label">La brecha: posición exportadora vs. penetración tecnológica</div>
+
+      <div class="gap-row">
+        <div class="gap-row-head">
+          <span class="gap-name">Banano</span>
+          <span class="gap-keywords">Trazabilidad &middot; Supply chain &middot; Precio</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill export" style="--w:97%"></div></div>
+          <span class="gap-label">Exportación: #1 mundial</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill tech" style="--w:5%"></div></div>
+          <span class="gap-label">Tecnología: casi nula</span>
+        </div>
+      </div>
+
+      <div class="gap-row">
+        <div class="gap-row-head">
+          <span class="gap-name">Cacao Fino</span>
+          <span class="gap-keywords">Blockchain &middot; Certificación digital &middot; B2B directo</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill export" style="--w:96%"></div></div>
+          <span class="gap-label">Exportación: #1 mundial (fino de aroma)</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill tech" style="--w:5%"></div></div>
+          <span class="gap-label">Tecnología: casi nula</span>
+        </div>
+      </div>
+
+      <div class="gap-row">
+        <div class="gap-row-head">
+          <span class="gap-name">Flores</span>
+          <span class="gap-keywords">FloraHolland &middot; Marketplace &middot; Logística</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill export" style="--w:93%"></div></div>
+          <span class="gap-label">Exportación: #1 mundial en rosas</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill tech" style="--w:14%"></div></div>
+          <span class="gap-label">Tecnología: baja</span>
+        </div>
+      </div>
+
+      <div class="gap-row">
+        <div class="gap-row-head">
+          <span class="gap-name">Camarón</span>
+          <span class="gap-keywords">Acuicultura &middot; Optimización &middot; IoT</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill export" style="--w:95%"></div></div>
+          <span class="gap-label">Exportación: #1 mundial</span>
+        </div>
+        <div class="gap-track-row">
+          <div class="gap-track"><div class="gap-fill tech" style="--w:9%"></div></div>
+          <span class="gap-label">Tecnología: muy baja</span>
+        </div>
+      </div>
+
+      <p style="font-size:11px;color:var(--t2);margin-top:24px;letter-spacing:0.01em">Fuentes: Tracxn (2026), StartupBlink, FAO, ANECACAO, CNA, ACORBANEC &mdash; datos de exportación 2025&ndash;2026.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ECOSYSTEM DATA EXPLORER ════════ -->
+<section id="datos" class="sec sec--alt" aria-labelledby="datos-title">
+  <div class="wrap">
+    <div class="fu">
+      <div class="sec-label">Ecosistema en Datos</div>
+      <h2 class="sec-title" id="datos-title">Esto es lo que realmente sabemos.</h2>
+      <p class="sec-sub">Cifras verificadas, no proyecciones. Explora el ecosistema ecuatoriano de startups por sector — la misma data que usamos para construir Elevare.</p>
+    </div>
+
+    <div class="eco-overview fu">
+      <div class="eco-stat">
+        <div class="eco-stat-n" data-target="2649" data-suffix="+">0</div>
+        <div class="eco-stat-l">Startups totales en Ecuador</div>
+      </div>
+      <div class="eco-stat">
+        <div class="eco-stat-n" data-static="$2.22B">$2.22B</div>
+        <div class="eco-stat-l">Capital levantado históricamente</div>
+      </div>
+      <div class="eco-stat">
+        <div class="eco-stat-n" data-target="114">0</div>
+        <div class="eco-stat-l">Inversionistas activos</div>
+      </div>
+      <div class="eco-stat">
+        <div class="eco-stat-n" data-target="243">0</div>
+        <div class="eco-stat-l">Rondas de inversión registradas</div>
+      </div>
+    </div>
+
+    <div class="eco-explorer fu">
+      <div class="eco-tabs" role="tablist" aria-label="Explorador de sectores">
+        <button class="eco-tab active" role="tab" aria-selected="true" data-sector="todos">Todo el ecosistema</button>
+        <button class="eco-tab" role="tab" aria-selected="false" data-sector="agritech">AgriTech</button>
+        <button class="eco-tab" role="tab" aria-selected="false" data-sector="fintech">FinTech</button>
+        <button class="eco-tab" role="tab" aria-selected="false" data-sector="foodagritech">Food &amp; Agriculture Tech</button>
+        <button class="eco-tab" role="tab" aria-selected="false" data-sector="saas">SaaS</button>
+        <button class="eco-tab" role="tab" aria-selected="false" data-sector="smartfarming">Smart Farming</button>
+      </div>
+      <div class="eco-panel">
+        <div class="eco-panel-title" id="eco-panel-title">Todo el ecosistema</div>
+        <div class="eco-panel-nums">
+          <div>
+            <div class="eco-num" id="eco-num-startups">0</div>
+            <div class="eco-num-label">Startups activas</div>
+          </div>
+          <div>
+            <div class="eco-num" id="eco-num-funded">0</div>
+            <div class="eco-num-label">Con financiamiento</div>
+          </div>
+        </div>
+        <div class="eco-funded-row">
+          <div class="eco-funded-label"><span>Porcentaje financiado</span><strong id="eco-pct-label">0%</strong></div>
+          <div class="eco-funded-track"><div class="eco-funded-fill" id="eco-funded-bar" style="--w:0%"></div></div>
+        </div>
+        <div class="eco-insight" id="eco-insight">Cargando...</div>
+      </div>
+    </div>
+
+    <p class="eco-source">Fuente: Tracxn, 2026. Cifras al momento de esta consulta &mdash; el ecosistema cambia mes a mes, no es un feed en vivo.</p>
+  </div>
+</section>
+
+<!-- ════════ WHY ELEVARE ════════ -->
+<section class="sec" aria-labelledby="why-title">
+
+  <div class="wrap">
+    <div class="fu">
+      <div class="sec-label">Por Qué Elevare</div>
+      <h2 class="sec-title" id="why-title">Las preguntas que ya te estás haciendo.</h2>
+      <p class="sec-sub">No pretendemos que esto sea obvio. Estas son las dudas reales — y las respuestas directas.</p>
+    </div>
+    <div class="obj-list">
+      <div class="obj-row fu fd1">
+        <div class="obj-q">"¿No existe ya algo así en Ecuador?"</div>
+        <div class="obj-a">No. Ninguna plataforma digital conecta los tres lados del ecosistema a la vez. La categoría está sin crear — <strong>la ventana está abierta ahora.</strong></div>
+      </div>
+      <div class="obj-row fu fd2">
+        <div class="obj-q">"¿Por qué confiar en la calidad de los perfiles?"</div>
+        <div class="obj-a">Cada perfil pasa por revisión manual antes de entrar. Y cada match genera datos — <strong>con 200+ matches, ese criterio se convierte en un algoritmo propio.</strong></div>
+      </div>
+      <div class="obj-row fu fd1">
+        <div class="obj-q">"¿Qué tiene Elevare que un fondo local no tenga?"</div>
+        <div class="obj-a">Décadas de relación comercial entre Países Bajos y Ecuador en agricultura — <strong>un puente a capital europeo que ningún competidor local puede ofrecer.</strong></div>
+      </div>
+      <div class="obj-row fu fd2">
+        <div class="obj-q">"¿El modelo depende solo de suscripciones?"</div>
+        <div class="obj-a">No. Elevare gana con equity y comisión sobre deals cerrados — <strong>el modelo solo funciona si las startups que apoya también ganan.</strong></div>
+      </div>
+      <div class="obj-row fu fd1">
+        <div class="obj-q">"¿Por qué empezar en Ecuador y no en un mercado más grande?"</div>
+        <div class="obj-a">Ecuador es el caso de estudio. Colombia y Perú son la expansión — <strong>un modelo probado antes de escalar, no una apuesta a ciegas.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ABOUT ELEVARE ════════ -->
+<section class="sec sec--alt" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="fu">
+        <div class="sec-label">Sobre Elevare</div>
+        <h2 class="sec-title" id="about-title" style="font-size:clamp(28px,4vw,42px)">Construido para Ecuador.<br>Diseñado para LATAM.</h2>
+        <p class="about-body">Elevare nace de una observación real: Ecuador tiene talento, activos de clase mundial y founders con ambición. Lo que no tiene es la infraestructura que convierte esa materia prima en empresas que escalan.</p>
+        <p class="about-body">No somos un evento. No somos un coworking. No somos una aceleradora más. Somos la capa digital que conecta el ecosistema completo — y genera inteligencia de mercado sobre él.</p>
+        <p class="about-body" style="margin-bottom:0">La visión a largo plazo: el LinkedIn del emprendimiento en América Latina. El punto de referencia donde founders, inversores y consultores serios construyen el futuro de la región.</p>
+      </div>
+      <div class="about-cards fu fd2">
+        <div class="about-mini">
+          <div class="mini-label">Misión</div>
+          <div class="mini-text">Conectar a la persona correcta con el capital correcto y el conocimiento correcto — en el momento correcto.</div>
+        </div>
+        <div class="about-mini">
+          <div class="mini-label">Visión</div>
+          <div class="mini-text">Ser el hub de referencia del emprendimiento en LATAM — donde se construyen las empresas que transformarán la región.</div>
+        </div>
+        <div class="about-mini">
+          <div class="mini-label">Modelo</div>
+          <div class="mini-text">Suscripciones + equity en exits + comisiones sobre deals cerrados. Alineados con el éxito de cada startup.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ IGNACIO ════════ -->
+<section id="ignacio" class="sec" aria-labelledby="ign-title">
+  <div class="wrap--sm">
+    <div class="fu" style="text-align:center;margin-bottom:44px">
+      <div class="sec-label">El Founder</div>
+      <h2 class="sec-title" id="ign-title">La persona detrás de Elevare</h2>
+    </div>
+    <div class="ign-card fu">
+      <div class="ign-av" aria-label="Ignacio Ponce initials">IP</div>
+      <div>
+        <div class="ign-name">Ignacio Ponce</div>
+        <div class="ign-role">Founder &amp; CEO — Elevare Ventures</div>
+        <p class="ign-bio">Ecuatoriano radicado en Amsterdam, estudiando finanzas. Mi paso por fondos de inversión, análisis de negocios y consultoría estratégica me dio una lectura clara de cómo se estructura el capital — y de todo lo que le falta al ecosistema ecuatoriano para competir por él.</p>
+        <p class="ign-bio">Mi objetivo es traer los frameworks de venture capital y private equity que veo operar en Europa hacia los ecosistemas de inversión temprana desatendidos de América Latina — empezando por Ecuador. Elevare es el primer paso de esa visión.</p>
+        <div class="ign-tags">
+          <span class="ign-tag">Finance &amp; Analytics</span>
+          <span class="ign-tag">Investment Funds</span>
+          <span class="ign-tag">Business Strategy</span>
+          <span class="ign-tag">Amsterdam · Ecuador</span>
+          <span class="ign-tag">Venture Capital</span>
+          <span class="ign-tag">LATAM Vision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ MATCHER ════════ -->
+<section id="match" class="sec sec--alt" aria-labelledby="match-title">
+  <div class="wrap--sm">
+    <div class="fu" style="text-align:center;margin-bottom:44px">
+      <div class="sec-label">Pruébalo</div>
+      <h2 class="sec-title" id="match-title">¿Dónde encajas?</h2>
+      <p class="sec-sub" style="margin:0 auto">Responde 3 preguntas y te mostramos cómo funcionaría Elevare para tu perfil específico.</p>
+    </div>
+
+    <div class="match-card fu">
+      <div class="match-progress" aria-hidden="true">
+        <span class="match-dot active" id="match-dot-1"></span>
+        <span class="match-dot" id="match-dot-2"></span>
+        <span class="match-dot" id="match-dot-3"></span>
+      </div>
+
+      <div class="match-step active" data-step="1">
+        <div class="match-q">¿Cuál es tu perfil?</div>
+        <div class="match-options-role">
+          <button class="match-opt" data-role="startup">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Startup</span>
+          </button>
+          <button class="match-opt" data-role="inversionista">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Inversionista</span>
+          </button>
+          <button class="match-opt" data-role="consultor">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Consultor</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="match-step" data-step="2">
+        <div class="match-q" id="match-q2"></div>
+        <div class="match-pills" id="match-options2"></div>
+      </div>
+
+      <div class="match-step" data-step="3">
+        <div class="match-q" id="match-q3"></div>
+        <div class="match-pills" id="match-options3"></div>
+      </div>
+
+      <div class="match-step" data-step="result">
+        <div class="match-result-icon" id="match-result-icon" aria-hidden="true"></div>
+        <div class="match-result-title">Así funcionaría para ti</div>
+        <p class="match-result-text" id="match-result-text"></p>
+        <div class="match-result-actions">
+          <a href="#cta" class="btn btn-primary" id="match-cta-btn">Unirme →</a>
+          <button class="match-reset" id="match-reset">Volver a intentar</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="match-disclaimer">Esto es una simulación ilustrativa del proceso de curación de Elevare — no un motor de matching en vivo todavía.</p>
+  </div>
+</section>
+
+<!-- ════════ CTA FINAL ════════ -->
+<section id="cta" aria-labelledby="cta-title">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="wrap cta-content">
+    <div style="text-align:center">
+      <svg class="cta-mark fu" width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
+        <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
+        <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
+        <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
+        <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="sec-label fu">Lista de Espera</div>
+      <h2 class="cta-h2 fu" id="cta-title">Sé de los primeros.</h2>
+      <p class="cta-sub fu">Elige tu perfil para unirte a la comunidad que está construyendo el futuro del emprendimiento en Ecuador.</p>
+      <div class="cta-roles fu">
+        <a href="#cta" class="cta-role-card js-open-modal" data-role="startup">
+          <div class="cta-role-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <span class="cta-role-label">Soy Startup</span>
+        </a>
+        <a href="#cta" class="cta-role-card js-open-modal" data-role="inversionista">
+          <div class="cta-role-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <span class="cta-role-label">Soy Inversionista</span>
+        </a>
+        <a href="#cta" class="cta-role-card js-open-modal" data-role="consultor">
+          <div class="cta-role-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="cta-role-label">Soy Consultor</span>
+        </a>
+      </div>
+      <p class="cta-note fu">Sin costo &middot; Revisión manual &middot; Respuesta en 72 horas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="4.5" height="28" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="4" width="17" height="4" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="16" width="12.5" height="4" rx="0.5" fill="#C4693A"/>
+          <rect x="3" y="28" width="17" height="4" rx="0.5" fill="#C4693A"/>
+          <polyline points="20,32 28,3 34.5,16" stroke="#C4693A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="footer-copy">&copy; 2025 Elevare Ventures</span>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:ignacio@elevareventures.com" class="footer-contact">ignacio@elevareventures.com</a>
+        <span class="footer-tagline">Ecuador primero. LATAM después.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════ INTAKE MODAL ════════ -->
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Cerrar" type="button">&times;</button>
+    <div id="modal-content">
+      <div class="modal-role-tabs" id="modal-role-tabs">
+        <button class="modal-role-tab" data-role="startup" type="button">Startup</button>
+        <button class="modal-role-tab" data-role="inversionista" type="button">Inversionista</button>
+        <button class="modal-role-tab" data-role="consultor" type="button">Consultor</button>
+      </div>
+      <h3 class="modal-title" id="modal-title">Únete a la lista de espera</h3>
+      <p class="modal-sub">Cuéntanos lo básico — el resto lo vemos en la revisión manual, dentro de 72 horas.</p>
+      <form id="modal-form">
+        <input type="hidden" name="access_key" value="7f76dad9-976b-444a-8447-9a038be4c091">
+        <input type="hidden" name="subject" id="modal-field-subject" value="Nueva aplicación Elevare">
+        <input type="hidden" name="rol" id="modal-field-role" value="">
+        <div class="modal-field">
+          <label for="modal-name">Nombre</label>
+          <input type="text" id="modal-name" name="nombre" required>
+        </div>
+        <div class="modal-field">
+          <label for="modal-email">Email</label>
+          <input type="email" id="modal-email" name="email" required>
+        </div>
+        <div class="modal-field" id="modal-dynamic-field"></div>
+        <button type="submit" class="btn btn-primary modal-submit" id="modal-submit">Enviar →</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modal-success" hidden>
+      <div class="modal-success-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Listo.</h3>
+      <p>Tu perfil fue recibido. Nuestro equipo lo revisa manualmente y te contactamos dentro de las próximas 72 horas.</p>
+    </div>
+    <div class="modal-error" id="modal-error" hidden>
+      <p>Algo salió mal enviando el formulario. Escríbenos directamente a <a href="mailto:ignacio@elevareventures.com">ignacio@elevareventures.com</a> y lo resolvemos ahí mismo.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ── Scroll-triggered fade-up animations
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('on');
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -32px 0px'});
+  document.querySelectorAll('.fu').forEach(function(el){obs.observe(el)});
+
+  // ── Counter animation
+  function easeOut(t){return 1-Math.pow(1-t,3)}
+  function runCounter(el){
+    var target = parseInt(el.dataset.target,10);
+    var suffix = el.dataset.suffix||'';
+    var prefix = el.dataset.prefix||'';
+    var dur = 1800;
+    var start = null;
+    function frame(ts){
+      if(!start) start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var val=Math.round(easeOut(p)*target);
+      el.textContent=prefix+val.toLocaleString()+suffix;
+      if(p<1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var cObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && e.target.dataset.target){
+        runCounter(e.target);
+        cObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.6});
+  document.querySelectorAll('[data-target]').forEach(function(el){cObs.observe(el)});
+
+  // ── Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');
+      if(id==='#') return;
+      var t=document.querySelector(id);
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+
+  // ── Matcher tool
+  var matchIcons = {
+    startup: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+    inversionista: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    consultor: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4693A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+  };
+  var matchConfig = {
+    startup: {
+      q2: '¿En qué sector operas?',
+      opts2: ['AgriTech','FinTech','Logística','HealthTech','Otro sector'],
+      q3: '¿En qué etapa estás?',
+      opts3: ['Idea / Pre-seed','Seed','Growth'],
+      ctaLabel: 'Unirme como Startup →',
+      template: function(sector, stage){
+        return 'Con un perfil de startup en <strong>' + sector + '</strong>, etapa <strong>' + stage + '</strong>, Elevare te conectaría primero con consultores senior especializados en tu sector, y después con inversionistas cuya tesis incluye esa etapa. Tu perfil pasaría por revisión manual antes de aparecer en la plataforma — solo entran los que muestran evidencia real de tracción.';
+      }
+    },
+    inversionista: {
+      q2: '¿Qué sector te interesa más?',
+      opts2: ['AgriTech','FinTech','Logística','HealthTech','Todos los sectores'],
+      q3: '¿Cuál es tu ticket típico?',
+      opts3: ['Menos de $50K','$50K – $200K','Más de $200K'],
+      ctaLabel: 'Unirme como Inversionista →',
+      template: function(sector, ticket){
+        return 'Con interés en <strong>' + sector + '</strong> y un ticket de <strong>' + ticket + '</strong>, Elevare te daría acceso prioritario a startups ya vetadas en ese sector y etapa — introducciones que llegan con contexto, no un directorio para explorar por tu cuenta.';
+      }
+    },
+    consultor: {
+      q2: '¿Cuál es tu área de expertise?',
+      opts2: ['Finanzas & Estrategia','Legal','Marketing & Marca','Operaciones','Tecnología'],
+      q3: '¿Cuántas horas puedes dedicar al mes?',
+      opts3: ['2–5 horas','5–10 horas','10+ horas'],
+      ctaLabel: 'Unirme como Consultor →',
+      template: function(area, hours){
+        return 'Con expertise en <strong>' + area + '</strong> y <strong>' + hours + '</strong> disponibles al mes, Elevare te posicionaría como Founding Advisor, con introducciones curadas dentro de tu disponibilidad — sin necesidad de buscar clientes por tu cuenta.';
+      }
+    }
+  };
+  var matchState = { role: null, sector: null, final: null };
+
+  function matchGoToStep(step){
+    document.querySelectorAll('.match-step').forEach(function(s){
+      s.classList.toggle('active', s.dataset.step === String(step));
+    });
+    [1,2,3].forEach(function(n){
+      var dot = document.getElementById('match-dot-' + n);
+      if(!dot) return;
+      dot.classList.remove('active','done');
+      if(n < step || step === 'result') dot.classList.add('done');
+      else if(n === step) dot.classList.add('active');
+    });
+  }
+
+  function matchRenderPills(containerId, options, onPick){
+    var el = document.getElementById(containerId);
+    el.innerHTML = '';
+    options.forEach(function(opt){
+      var btn = document.createElement('button');
+      btn.className = 'match-pill';
+      btn.type = 'button';
+      btn.textContent = opt;
+      btn.addEventListener('click', function(){ onPick(opt); });
+      el.appendChild(btn);
+    });
+  }
+
+  document.querySelectorAll('.match-opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var role = btn.dataset.role;
+      matchState.role = role;
+      var cfg = matchConfig[role];
+      document.getElementById('match-q2').textContent = cfg.q2;
+      matchRenderPills('match-options2', cfg.opts2, function(pick){
+        matchState.sector = pick;
+        document.getElementById('match-q3').textContent = cfg.q3;
+        matchRenderPills('match-options3', cfg.opts3, function(pick2){
+          var text = matchConfig[matchState.role].template(matchState.sector, pick2);
+          document.getElementById('match-result-text').innerHTML = text;
+          document.getElementById('match-result-icon').innerHTML = matchIcons[matchState.role];
+          document.getElementById('match-cta-btn').textContent = matchConfig[matchState.role].ctaLabel;
+          matchGoToStep('result');
+        });
+        matchGoToStep(3);
+      });
+      matchGoToStep(2);
+    });
+  });
+
+  document.getElementById('match-reset').addEventListener('click', function(){
+    matchState = { role: null, sector: null, final: null };
+    document.getElementById('match-options2').innerHTML = '';
+    document.getElementById('match-options3').innerHTML = '';
+    matchGoToStep(1);
+  });
+
+  // ── Ecosystem Data Explorer
+  var ecoData = {
+    todos: {
+      title: 'Todo el ecosistema',
+      startups: 2649,
+      funded: 198,
+      insight: '<strong>114 inversionistas</strong> han participado en 243 rondas de inversión — pero solo 1 de cada 13 startups ecuatorianas ha logrado financiamiento real.'
+    },
+    agritech: {
+      title: 'AgriTech',
+      startups: 26,
+      funded: 2,
+      insight: 'El sector con la brecha más grande entre activos exportables de clase mundial y financiamiento tecnológico real. <strong>24 de 26 startups siguen sin capital.</strong>'
+    },
+    fintech: {
+      title: 'FinTech',
+      startups: 121,
+      funded: 12,
+      insight: 'El sector más grande y mejor establecido — hogar de <strong>Kushki, el único unicornio de Ecuador.</strong>'
+    },
+    foodagritech: {
+      title: 'Food & Agriculture Tech',
+      startups: 52,
+      funded: 4,
+      insight: 'Tecnología aplicada principalmente a delivery y distribución — <strong>logística de última milla, no producción primaria.</strong>'
+    },
+    saas: {
+      title: 'SaaS',
+      startups: 138,
+      funded: 11,
+      insight: 'El segundo sector más numeroso del país, con <strong>adopción empresarial todavía incipiente</strong> fuera de fintech.'
+    },
+    smartfarming: {
+      title: 'Smart Farming',
+      startups: 11,
+      funded: 1,
+      insight: 'Sensores, drones e IoT aplicados al campo — <strong>la categoría más nueva y menos desarrollada</strong> del ecosistema.'
+    }
+  };
+
+  function animateEcoNumber(el, target, dur){
+    var start = null;
+    function frame(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var val = Math.round(easeOut(p) * target);
+      el.textContent = val.toLocaleString();
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function renderEcoPanel(key){
+    var d = ecoData[key];
+    if(!d) return;
+    document.getElementById('eco-panel-title').textContent = d.title;
+    document.getElementById('eco-insight').innerHTML = d.insight;
+    var pct = ((d.funded / d.startups) * 100).toFixed(1);
+    document.getElementById('eco-pct-label').textContent = pct + '%';
+    var bar = document.getElementById('eco-funded-bar');
+    bar.style.setProperty('--w', pct + '%');
+    bar.style.width = '0%';
+    requestAnimationFrame(function(){ bar.style.width = pct + '%'; });
+    animateEcoNumber(document.getElementById('eco-num-startups'), d.startups, 900);
+    animateEcoNumber(document.getElementById('eco-num-funded'), d.funded, 900);
+  }
+
+  var ecoTabs = document.querySelectorAll('.eco-tab');
+  ecoTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      ecoTabs.forEach(function(t){
+        var isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      renderEcoPanel(tab.dataset.sector);
+    });
+  });
+
+  var ecoExplorerObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        renderEcoPanel('todos');
+        ecoExplorerObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  var ecoExplorerEl = document.querySelector('.eco-explorer');
+  if(ecoExplorerEl) ecoExplorerObs.observe(ecoExplorerEl);
+
+  // ── Platform tab switcher
+  var platTabs = document.querySelectorAll('.plat-tab');
+  platTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = tab.dataset.tab;
+      platTabs.forEach(function(t){
+        var isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      document.querySelectorAll('.plat-panel').forEach(function(p){
+        var isActive = p.id === 'panel-' + target;
+        p.classList.toggle('active', isActive);
+        if(isActive){ p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
+      });
+    });
+  });
+
+  // ── Intake Modal
+  var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
+  var modalFieldConfig = {
+    startup: { label: 'Sector', name: 'sector', options: ['AgriTech','FinTech','Logística','HealthTech','Otro sector'] },
+    inversionista: { label: 'Ticket típico', name: 'ticket', options: ['Menos de $50K','$50K – $200K','Más de $200K'] },
+    consultor: { label: 'Área de expertise', name: 'expertise', options: ['Finanzas & Estrategia','Legal','Marketing & Marca','Operaciones','Tecnología'] }
+  };
+
+  var modalOverlay = document.getElementById('modal-overlay');
+  var modalRoleTabs = document.querySelectorAll('.modal-role-tab');
+  var currentModalRole = 'startup';
+
+  function renderModalDynamicField(role){
+    var cfg = modalFieldConfig[role];
+    var el = document.getElementById('modal-dynamic-field');
+    var opts = cfg.options.map(function(o){ return '<option value="' + o + '">' + o + '</option>'; }).join('');
+    el.innerHTML = '<label for="modal-dynamic-select">' + cfg.label + '</label><select id="modal-dynamic-select" name="' + cfg.name + '" required>' + opts + '</select>';
+  }
+
+  var modalRoleLabels = { startup: 'Startup', inversionista: 'Inversionista', consultor: 'Consultor' };
+
+  function setModalRole(role){
+    currentModalRole = role;
+    document.getElementById('modal-field-role').value = modalRoleLabels[role];
+    document.getElementById('modal-field-subject').value = 'Nueva aplicación Elevare — ' + modalRoleLabels[role];
+    modalRoleTabs.forEach(function(t){ t.classList.toggle('active', t.dataset.role === role); });
+    renderModalDynamicField(role);
+  }
+
+  function openModal(role){
+    document.getElementById('modal-content').hidden = false;
+    document.getElementById('modal-success').hidden = true;
+    document.getElementById('modal-error').hidden = true;
+    document.getElementById('modal-form').reset();
+    setModalRole(role || 'startup');
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  modalRoleTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ setModalRole(tab.dataset.role); });
+  });
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', function(e){ if(e.target === modalOverlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal(); });
+
+  document.getElementById('modal-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var form = e.target;
+    var submitBtn = document.getElementById('modal-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    fetch(WEB3FORMS_ENDPOINT, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){ return res.json(); }).then(function(data){
+      if(data.success){
+        document.getElementById('modal-content').hidden = true;
+        document.getElementById('modal-success').hidden = false;
+      } else {
+        document.getElementById('modal-content').hidden = true;
+        document.getElementById('modal-error').hidden = false;
+      }
+    }).catch(function(){
+      document.getElementById('modal-content').hidden = true;
+      document.getElementById('modal-error').hidden = false;
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar →';
+    });
+  });
+
+  // Wire every CTA on the page to open the shared modal
+  document.querySelectorAll('.js-open-modal').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(el.dataset.role);
+    });
+  });
+
+  // Matcher result CTA opens the modal pre-filled with the role chosen in the matcher
+  var matchCtaBtn = document.getElementById('match-cta-btn');
+  if(matchCtaBtn){
+    matchCtaBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(matchState.role);
+    });
+  }
+
+  // ── Nav border on scroll
+  var navEl=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    navEl.style.borderBottomColor=window.scrollY>50?'rgba(255,255,255,0.05)':'var(--border)';
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
