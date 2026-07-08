@@ -1256,6 +1256,23 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
 
   // ── Intake Modal
   var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+  var SUPABASE_URL = 'https://mjeoflefrfkphcwghvkn.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_3VY_fEBX4oIZ1vcgIwqlqw_uTsrX4tQ';
+
+  function submitToSupabase(payload){
+    return fetch(SUPABASE_URL + '/rest/v1/aplicaciones', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      if(!res.ok){ return res.text().then(function(t){ throw new Error('Supabase insert failed: ' + res.status + ' ' + t); }); }
+    });
+  }
 
   var modalFieldConfig = {
     startup: { label: 'Sector', name: 'sector', options: ['AgriTech','FinTech','Logística','HealthTech','Otro sector'] },
@@ -1315,21 +1332,37 @@ footer{padding:36px 0;border-top:1px solid var(--border)}
     var submitBtn = document.getElementById('modal-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
-    fetch(WEB3FORMS_ENDPOINT, {
+
+    var fd = new FormData(form);
+    var cfg = modalFieldConfig[currentModalRole];
+    var dynamicValue = fd.get(cfg.name) || '';
+    var supabasePayload = {
+      nombre: fd.get('nombre') || '',
+      email: fd.get('email') || '',
+      rol: fd.get('rol') || '',
+      detalle: cfg.label + ': ' + dynamicValue
+    };
+
+    var web3formsPromise = fetch(WEB3FORMS_ENDPOINT, {
       method: 'POST',
-      body: new FormData(form),
+      body: fd,
       headers: { 'Accept': 'application/json' }
-    }).then(function(res){ return res.json(); }).then(function(data){
-      if(data.success){
+    }).then(function(res){ return res.json(); });
+
+    var supabasePromise = submitToSupabase(supabasePayload).catch(function(err){
+      console.error('Elevare: Supabase insert failed (Web3Forms email still sent if successful).', err);
+    });
+
+    Promise.allSettled([web3formsPromise, supabasePromise]).then(function(results){
+      var web3formsResult = results[0];
+      var web3formsOk = web3formsResult.status === 'fulfilled' && web3formsResult.value && web3formsResult.value.success;
+      if(web3formsOk){
         document.getElementById('modal-content').hidden = true;
         document.getElementById('modal-success').hidden = false;
       } else {
         document.getElementById('modal-content').hidden = true;
         document.getElementById('modal-error').hidden = false;
       }
-    }).catch(function(){
-      document.getElementById('modal-content').hidden = true;
-      document.getElementById('modal-error').hidden = false;
     }).finally(function(){
       submitBtn.disabled = false;
       submitBtn.textContent = 'Enviar →';
