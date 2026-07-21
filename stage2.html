@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevare — Cuestionario Profundo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808; --bg-alt: #0C0C0C; --surface: #111111; --border: #1C1C1C;
+  --green: #1DB954; --green-hover: #22d45f; --green-dim: rgba(29,185,84,0.1);
+  --white: #FFFFFF; --t1: #AAAAAA; --t2: #666666;
+  --font: 'Inter', -apple-system, sans-serif; --radius: 12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;padding:40px 20px}
+.wrap{max-width:640px;margin:0 auto}
+h1{font-size:32px;font-weight:900;margin-bottom:8px;letter-spacing:-0.02em}
+.sub{color:var(--t1);margin-bottom:40px;font-size:15px}
+.field{margin-bottom:28px}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--white)}
+.hint{font-size:12px;color:var(--t2);margin-top:4px}
+input,select,textarea{
+  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:12px 14px;color:var(--white);font-family:var(--font);font-size:14px
+}
+textarea{min-height:80px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+.founder-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.btn{background:var(--green);color:#000;border:none;padding:14px 24px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;width:100%}
+.btn:hover{background:var(--green-hover)}
+.btn-add{background:transparent;border:1px dashed var(--border);color:var(--t1);width:100%;padding:10px;border-radius:var(--radius);cursor:pointer;font-family:var(--font);font-size:13px}
+#status{margin-top:16px;font-size:14px;text-align:center}
+.success{color:var(--green)}
+.error{color:#e05252}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cuéntanos más sobre tu startup</h1>
+  <p class="sub">Esta información nos permite generar un assessment estructurado y preciso. Toma 5-8 minutos.</p>
+
+  <form id="stage2Form">
+    <div class="field">
+      <label>Email con el que aplicaste *</label>
+      <input type="email" id="email" required>
+    </div>
+
+    <div class="field">
+      <label>Etapa actual *</label>
+      <select id="stage" required>
+        <option value="">Selecciona...</option>
+        <option value="pre-seed">Pre-seed</option>
+        <option value="seed">Seed</option>
+        <option value="early-growth">Early-growth</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Modelo de negocio *</label>
+      <select id="business_model" required>
+        <option value="">Selecciona...</option>
+        <option value="saas">SaaS (suscripción)</option>
+        <option value="comision">Comisión por transacción</option>
+        <option value="licencia">Licencia</option>
+        <option value="marketplace">Marketplace</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Explica brevemente cómo generas (o planeas generar) ingresos *</label>
+      <textarea id="business_model_detalle" required placeholder="Ej: cobramos $X/mes por acceso a la plataforma, más una comisión del Y% sobre..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Sector *</label>
+      <select id="sector" required>
+        <option value="">Selecciona...</option>
+        <option value="agritech">AgriTech</option>
+        <option value="fintech">Fintech</option>
+        <option value="logistics">Logística</option>
+        <option value="healthtech">Healthtech</option>
+        <option value="other">Otro</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Subsector específico *</label>
+      <input type="text" id="sector_subcategory" required placeholder="Ej: trazabilidad de cacao, crédito agrícola, última milla...">
+    </div>
+
+    <div class="field">
+      <label>Tamaño del equipo *</label>
+      <input type="number" id="team_size" required min="1">
+    </div>
+
+    <div class="field">
+      <label>Fundadores — trasfondo de cada uno *</label>
+      <p class="hint">Agrega a todos los cofundadores, no solo al principal.</p>
+      <div id="foundersContainer"></div>
+      <button type="button" class="btn-add" id="addFounder">+ Agregar fundador</button>
+    </div>
+
+    <div class="field">
+      <label>Tracción — usuarios/clientes activos (número exacto) *</label>
+      <input type="text" id="traccion_usuarios" required placeholder="Ej: 2 exportadores usando el producto activamente">
+    </div>
+
+    <div class="field">
+      <label>Tracción — ingresos actuales *</label>
+      <input type="text" id="traccion_ingresos" required placeholder="Ej: $0 (sin monetización aún) o $500/mes en MRR">
+    </div>
+
+    <div class="field">
+      <label>Tracción — pilotos o contratos firmados</label>
+      <input type="text" id="traccion_pilotos" placeholder="Ej: 2 cartas de intención firmadas, sin contrato pagado">
+    </div>
+
+    <div class="field">
+      <label>Monto exacto solicitado (USD) *</label>
+      <input type="number" id="amount_sought_usd" required min="1000">
+    </div>
+
+    <div class="field">
+      <label>Uso de fondos desglosado *</label>
+      <textarea id="use_of_funds" required placeholder="Ej: 60% desarrollo de producto, 30% contratación de ventas, 10% marketing"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Ciudad / geografía *</label>
+      <input type="text" id="geography" required placeholder="Ej: Quito, Ecuador">
+    </div>
+
+    <button type="submit" class="btn">Enviar cuestionario</button>
+    <div id="status"></div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://mjeoflefrfkphcwghvkn.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_3VY_fEBX4oIZ1vcgIwqlqw_uTsrX4tQ';
+
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+  let founderCount = 0;
+  function addFounderField() {
+    founderCount++;
+    const div = document.createElement('div');
+    div.className = 'founder-block';
+    div.innerHTML = `
+      <label>Fundador ${founderCount} — nombre</label>
+      <input type="text" class="founder-nombre" style="margin-bottom:10px">
+      <label>Trasfondo profesional (experiencia relevante)</label>
+      <textarea class="founder-trasfondo" placeholder="Ej: 4 años en logística de exportación en Nestlé Ecuador"></textarea>
+    `;
+    document.getElementById('foundersContainer').appendChild(div);
+  }
+  addFounderField();
+  document.getElementById('addFounder').addEventListener('click', addFounderField);
+
+  document.getElementById('stage2Form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const statusEl = document.getElementById('status');
+    statusEl.textContent = 'Enviando...';
+    statusEl.className = '';
+
+    const founders = Array.from(document.querySelectorAll('.founder-block')).map(block => ({
+      nombre: block.querySelector('.founder-nombre').value,
+      trasfondo: block.querySelector('.founder-trasfondo').value,
+    }));
+
+    const stage2_responses = {
+      stage: document.getElementById('stage').value,
+      business_model: document.getElementById('business_model').value,
+      business_model_detalle: document.getElementById('business_model_detalle').value,
+      sector: document.getElementById('sector').value,
+      sector_subcategory: document.getElementById('sector_subcategory').value,
+      team_size: parseInt(document.getElementById('team_size').value, 10),
+      founders,
+      traccion_usuarios: document.getElementById('traccion_usuarios').value,
+      traccion_ingresos: document.getElementById('traccion_ingresos').value,
+      traccion_pilotos: document.getElementById('traccion_pilotos').value,
+      amount_sought_usd: parseInt(document.getElementById('amount_sought_usd').value, 10),
+      use_of_funds: document.getElementById('use_of_funds').value,
+      geography: document.getElementById('geography').value,
+    };
+
+    const email = document.getElementById('email').value;
+
+    const { error } = await supabase
+      .from('aplicaciones')
+      .update({
+        stage2_responses,
+        stage2_completed_at: new Date().toISOString(),
+      })
+      .eq('email', email);
+
+    if (error) {
+      statusEl.textContent = 'Error: ' + error.message + ' — verifica que el email coincida con tu aplicación inicial.';
+      statusEl.className = 'error';
+    } else {
+      statusEl.textContent = '¡Listo! Recibimos tu información. Te contactaremos pronto.';
+      statusEl.className = 'success';
+      document.getElementById('stage2Form').reset();
+    }
+  });
+</script>
+</body>
+</html>
