@@ -103,9 +103,13 @@ async function callClaude(systemPrompt, userMessage) {
     },
     body: JSON.stringify({
       model: CLAUDE_MODEL,
-      max_tokens: 4096,
-      // Nota: Sonnet 5 rechaza con error 400 cualquier valor de temperature/top_p/top_k
-      // distinto al default — por eso ya no se envía este parámetro.
+      max_tokens: 8192,
+      // Sonnet 5 activa "adaptive thinking" por defecto, que consume tokens del mismo
+      // presupuesto de max_tokens antes de escribir la respuesta — lo desactivamos
+      // explícitamente porque esta tarea es extracción/scoring estructurado,
+      // no requiere razonamiento extendido, y así garantizamos espacio completo
+      // para la respuesta real sin riesgo de que se corte a la mitad.
+      thinking: { type: 'disabled' },
       system: systemPrompt,
       messages: [{ role: 'user', content: userMessage }],
     }),
