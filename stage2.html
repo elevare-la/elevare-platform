@@ -138,13 +138,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
   </form>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = 'https://mjeoflefrfkphcwghvkn.supabase.co';
-  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_3VY_fEBX4oIZ1vcgIwqlqw_uTsrX4tQ';
-
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-
+  // ── Lógica de la interfaz (fundadores) — funciona SIEMPRE, sin depender de Supabase ──
   let founderCount = 0;
   function addFounderField() {
     founderCount++;
@@ -160,12 +155,28 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
   }
   addFounderField();
   document.getElementById('addFounder').addEventListener('click', addFounderField);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ── Lógica de envío a Supabase — en su propio bloque, aislada ──
+  const SUPABASE_URL = 'https://mjeoflefrfkphcwghvkn.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_3VY_fEBX4oIZ1vcgIwqlqw_uTsrX4tQ';
 
   document.getElementById('stage2Form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const statusEl = document.getElementById('status');
+
+    if (typeof window.supabase === 'undefined') {
+      statusEl.textContent = 'Error: no se pudo cargar la conexión a la base de datos. Desactiva bloqueadores de anuncios/privacidad para este sitio e intenta de nuevo.';
+      statusEl.className = 'error';
+      return;
+    }
+
     statusEl.textContent = 'Enviando...';
     statusEl.className = '';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
     const founders = Array.from(document.querySelectorAll('.founder-block')).map(block => ({
       nombre: block.querySelector('.founder-nombre').value,
