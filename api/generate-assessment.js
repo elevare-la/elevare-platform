@@ -93,7 +93,7 @@ FORMATO DE SALIDA (JSON estricto, sin texto adicional):
 // ============================================================
 // Función auxiliar — llamada a Claude
 // ============================================================
-async function callClaude(systemPrompt, userMessage, temperature) {
+async function callClaude(systemPrompt, userMessage) {
   const response = await fetch(ANTHROPIC_API_URL, {
     method: 'POST',
     headers: {
@@ -103,8 +103,9 @@ async function callClaude(systemPrompt, userMessage, temperature) {
     },
     body: JSON.stringify({
       model: CLAUDE_MODEL,
-      max_tokens: 2000,
-      temperature,
+      max_tokens: 4096,
+      // Nota: Sonnet 5 rechaza con error 400 cualquier valor de temperature/top_p/top_k
+      // distinto al default — por eso ya no se envía este parámetro.
       system: systemPrompt,
       messages: [{ role: 'user', content: userMessage }],
     }),
@@ -182,8 +183,7 @@ export default async function handler(req, res) {
     // ETAPA 1: Extracción
     const structuredData = await callClaude(
       EXTRACTION_SYSTEM_PROMPT,
-      JSON.stringify(form_responses),
-      0.2
+      JSON.stringify(form_responses)
     );
 
     // Datos de mercado relevantes al sector detectado
@@ -195,7 +195,7 @@ export default async function handler(req, res) {
     // ETAPA 2: Assessment
     const userMessageEtapa2 = `DATOS ESTRUCTURADOS DEL STARTUP:\n${JSON.stringify(structuredData)}\n\nDATOS DE MERCADO VERIFICADOS:\n${JSON.stringify(marketData)}`;
 
-    const assessmentDraft = await callClaude(ASSESSMENT_SYSTEM_PROMPT, userMessageEtapa2, 0.4);
+    const assessmentDraft = await callClaude(ASSESSMENT_SYSTEM_PROMPT, userMessageEtapa2);
 
     assessmentDraft.model_version = CLAUDE_MODEL;
     assessmentDraft.generation_timestamp = new Date().toISOString();
